@@ -10,6 +10,7 @@ import org.springframework.boot.CommandLineRunner;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
+import com.openclassrooms.blogdatalayer.model.LightPost;
 import com.openclassrooms.blogdatalayer.model.Post;
 import com.openclassrooms.blogdatalayer.model.Tutorial;
 import com.openclassrooms.blogdatalayer.repository.PostRepository;
@@ -61,6 +62,9 @@ public class BlogdatalayerApplication implements CommandLineRunner{
       
       List<Tutorial> resultTutorial = tutorialRespository.findByName("How to use MongoRepository");
       resultTutorial.stream().forEach(tutorial -> logger.info(tutorial.getName()));
+      
+      List<LightPost> lightPosts = postRepository.findByOrderByDateDesc();
+      lightPosts.stream().forEach(post -> logger.info(post.getName()));
       
     }
 
