@@ -13,6 +13,7 @@ import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 import com.openclassrooms.blogdatalayer.model.LightPost;
 import com.openclassrooms.blogdatalayer.model.Post;
+import com.openclassrooms.blogdatalayer.model.Tag;
 import com.openclassrooms.blogdatalayer.model.Tutorial;
 import com.openclassrooms.blogdatalayer.repository.PostRepository;
 import com.openclassrooms.blogdatalayer.repository.TutorialRepository;
@@ -70,24 +71,28 @@ public class BlogdatalayerApplication implements CommandLineRunner{
       List<String> names = postRepository.findAllName();
       names.stream().forEach(name -> logger.info(name));
       
+      Tag springTag = new Tag();
+      springTag.setName("Spring Framework");
+      springTag.setSlug("spring-framework");
+      springTag.setDescription("Spring is the most popular Java Framework in the world.");
+      
       Post newPost = new Post();
       newPost.setName("My new blog");
       newPost.setDate(new Date());
       newPost.setContent("A new blog post, Amazing");
-      
-      postRepository.insert(newPost);
+      newPost.setTag(springTag);
       
       Post newPost1 = new Post();
-      newPost.setName("My new blog 1");
-      newPost.setDate(new Date());
-      newPost.setContent("A new blog post, Amazing");
+      newPost1.setName("A new post");
+      newPost1.setDate(new Date());
+      newPost1.setContent("A new blog post, Amazing");
       
       Post newPost2 = new Post();
-      newPost.setName("My new blog 2");
-      newPost.setDate(new Date());
-      newPost.setContent("A new blog post, Amazing");
+      newPost2.setName("new post again");
+      newPost2.setDate(new Date());
+      newPost2.setContent("A new blog post, Amazing");
       
-      postRepository.insert(List.of(newPost1, newPost2));
+      postRepository.insert(List.of(newPost, newPost1, newPost2));
       
     }
 

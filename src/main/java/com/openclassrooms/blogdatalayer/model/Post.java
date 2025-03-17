@@ -18,6 +18,8 @@ public class Post {
 	private String content;
 	
 	private Date date;
+	
+	private Tag tag;
 
 	public String getId() {
 		return id;
@@ -50,6 +52,13 @@ public class Post {
 	public void setDate(Date date) {
 		this.date = date;
 	}
-	
+
+	public Tag getTag() {
+		return tag;
+	}
+
+	public void setTag(Tag tag) {
+		this.tag = tag;
+	}
 	
 }
