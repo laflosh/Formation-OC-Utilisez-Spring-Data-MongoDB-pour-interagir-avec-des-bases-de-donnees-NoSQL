@@ -66,6 +66,9 @@ public class BlogdatalayerApplication implements CommandLineRunner{
       List<LightPost> lightPosts = postRepository.findByOrderByDateDesc();
       lightPosts.stream().forEach(post -> logger.info(post.getName()));
       
+      List<String> names = postRepository.findAllName();
+      names.stream().forEach(name -> logger.info(name));
+      
     }
 
 }
