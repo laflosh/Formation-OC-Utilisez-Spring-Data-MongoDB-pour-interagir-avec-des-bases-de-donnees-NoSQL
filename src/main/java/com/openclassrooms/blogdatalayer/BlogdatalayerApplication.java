@@ -94,6 +94,13 @@ public class BlogdatalayerApplication implements CommandLineRunner{
       
       postRepository.insert(List.of(newPost, newPost1, newPost2));
       
+      List<Post> updatedPost = postRepository.findByName(newPost.getName());
+      Post existingPost = updatedPost.get(0);
+      existingPost.setName("Name updated");
+      postRepository.save(existingPost);
+      
+      postRepository.delete(existingPost);
+      
     }
 
 }
