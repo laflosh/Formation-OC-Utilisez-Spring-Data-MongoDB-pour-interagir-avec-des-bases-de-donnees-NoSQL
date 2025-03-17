@@ -1,5 +1,6 @@
 package com.openclassrooms.blogdatalayer;
 
+import java.util.Date;
 import java.util.List;
 import java.util.Optional;
 
@@ -68,6 +69,25 @@ public class BlogdatalayerApplication implements CommandLineRunner{
       
       List<String> names = postRepository.findAllName();
       names.stream().forEach(name -> logger.info(name));
+      
+      Post newPost = new Post();
+      newPost.setName("My new blog");
+      newPost.setDate(new Date());
+      newPost.setContent("A new blog post, Amazing");
+      
+      postRepository.insert(newPost);
+      
+      Post newPost1 = new Post();
+      newPost.setName("My new blog 1");
+      newPost.setDate(new Date());
+      newPost.setContent("A new blog post, Amazing");
+      
+      Post newPost2 = new Post();
+      newPost.setName("My new blog 2");
+      newPost.setDate(new Date());
+      newPost.setContent("A new blog post, Amazing");
+      
+      postRepository.insert(List.of(newPost1, newPost2));
       
     }
 
